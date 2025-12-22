@@ -21,8 +21,8 @@ def test_data(text: str) -> str:
     """Return data with any prompt"""
     return {"message" : f"{text}"}
 
-if __name__ == "__main__":  
-    logger.info("Servidor MCP inicializando")
-    #inicializarServicio()
-    #app.run()
-    app.run(transport="streamable-http", host="0.0.0.0", port=3000)
+#if __name__ == "__main__":  
+#    logger.info("Servidor MCP inicializando")
+#    #inicializarServicio()
+#    #app.run()
+#    app.run(transport="streamable-http", host="0.0.0.0", port=3000)

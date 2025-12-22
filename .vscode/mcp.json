@@ -5,7 +5,7 @@
 			"type": "http"
 		},
 		"test-mcp-http2": {
-			"url": "https://collective-olive-manatee.fastmcp.app/mcp",
+			"url": "https://facel-soporte-ia.fastmcp.app/mcp",
 			"type": "http"
 		},
 		"test-mcp-stdio": {
