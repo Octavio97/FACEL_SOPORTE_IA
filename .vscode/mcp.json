@@ -1,0 +1,22 @@
+{
+	"servers": {
+		"test-mcp-http": {
+			"url": "http://0.0.0.0:3000",
+			"type": "http"
+		},
+		"test-mcp-http2": {
+			"url": "https://collective-olive-manatee.fastmcp.app/mcp",
+			"type": "http"
+		},
+		"test-mcp-stdio": {
+			"type": "stdio",
+			"command": "uv",
+			"cwd": "${workspaceFolder}",
+			"args": [
+				"run",
+				"main.py"
+			]
+		}
+	},
+	"inputs": []
+}
