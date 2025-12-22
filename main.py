@@ -64,8 +64,8 @@ def analize_question_prompt():
     Helpful answer:
     """
 
-#if __name__ == "__main__":  
-#    logger.info("Servidor MCP inicializando")
-#    #inicializarServicio()
-#    #app.run()
-#    app.run(transport="streamable-http", host="0.0.0.0", port=3000)
+if __name__ == "__main__":  
+    logger.info("Servidor MCP inicializando")
+    #inicializarServicio()
+    #app.run()
+    app.run(transport="streamable-http", host="0.0.0.0", port=3000)
