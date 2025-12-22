@@ -1,10 +1,10 @@
 {
 	"servers": {
-		"test-mcp-http": {
+		"test-mcp-http-local": {
 			"url": "http://0.0.0.0:3000",
 			"type": "http"
 		},
-		"test-mcp-http2": {
+		"test-mcp-http-remote": {
 			"url": "https://facel-soporte-ia.fastmcp.app/mcp",
 			"type": "http"
 		},
