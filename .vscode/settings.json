@@ -1,0 +1,7 @@
+{
+    "chat.mcp.serverSampling": {
+        "FACEL_CHATBOT_IA/.vscode/mcp.json: test-mcp-http-local": {
+            "allowedModels": []
+        }
+    }
+}

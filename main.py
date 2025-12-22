@@ -3,11 +3,6 @@ import logging
 import os
 import fitz
 from pathlib import Path
-#from typing import List, Dict, Any, Optional
-#from langchain_community.llms import Ollama
-#from inicializarServico import inicializarServicio
-#from langchain_community.vectorstores import Chroma
-#from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(message)s")
 logger = logging.getLogger("facel_chat_ia_mcp_http_remote")
@@ -18,9 +13,6 @@ SOURCE_DIRECTORY = SCRIPT_DIR / "src"
 app = FastMCP("SOPORTE_FACEL_IA")
 
 def leer_pdf(ruta_pdf):
-    """
-    Función para leer el contenido de un archivo PDF.
-    """
     documento = fitz.open(ruta_pdf)
     texto = ""
     
@@ -36,11 +28,12 @@ def answer_question(text: str) -> str:
 
 @app.resource("resource://src")
 async def read_documentation():
-    """
-    Función para procesar todos los archivos PDF en una carpeta y almacenarlos como recursos de FastMCP.
-    
-    Parámetros:
-    SOURCE_DIRECTORY (str): Ruta de la carpeta que contiene los archivos PDF.
+    """  
+    Function to process all PDF files in a folder and store them as FastMCP resources.
+
+    Parameters:
+
+    SOURCE_DIRECTORY (str): Path to the folder containing the PDF files.
     """
     logger.info("Accediste a datos de la documentacion del proyecto")
     archivos_pdf = [f for f in os.listdir(SOURCE_DIRECTORY) if f.endswith('.pdf')]
@@ -63,9 +56,9 @@ def analize_question_prompt():
     Only return the helpful answer below and nothing else but in spanish.
     Helpful answer:
     """
-
-if __name__ == "__main__":  
-    logger.info("Servidor MCP inicializando")
-    #inicializarServicio()
-    #app.run()
-    app.run(transport="streamable-http", host="0.0.0.0", port=3000)
+#RUN LOCAL MCP
+#if __name__ == "__main__":  
+#    logger.info("Servidor MCP inicializando")
+#    #inicializarServicio()
+#    #app.run()
+#    app.run(transport="streamable-http", host="0.0.0.0", port=3000)
