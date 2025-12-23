@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FACEL IA Soporte</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <div id="chat-container">
+        <nav>
+            <h1 class="header-text">FACEL IA Soporte</h1>
+        </nav>
+
+        <!-- Historial -->
+        <div id="messages"></div>
+        
+        <!-- Mensaje de Bienvenida -->
+        <div id="welcome">
+            <h1>Escribe tu duda</h1>
+            <p><i>El sistema toma tiempo en procesar su solicitud, favor de ser paciente y explicar a detalle su problema</i></p>
+        </div>
+
+        <!-- Input -->
+        <div id="user-input">
+            <button id="refreshBtn" onclick="window.location.reload()" title="Reiniciar chat"><i class="bi bi-arrow-clockwise"></i></button>
+            <input
+                type="text"
+                id="userMessage"
+                placeholder="Escribe tu mensaje..."
+            />
+            <button id="sendBtn" title="Enviar"><i class="bi bi-send-fill"></i></button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

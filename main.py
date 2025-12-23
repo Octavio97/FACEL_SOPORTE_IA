@@ -34,6 +34,8 @@ async def read_documentation():
     Parameters:
 
     SOURCE_DIRECTORY (str): Path to the folder containing the PDF files.
+    
+    Only return the helpful answer below and nothing else but in spanish.
     """
     logger.info("Accediste a datos de la documentacion del proyecto")
     archivos_pdf = [f for f in os.listdir(SOURCE_DIRECTORY) if f.endswith('.pdf')]
@@ -54,7 +56,6 @@ def analize_question_prompt():
     If you don't know the answer, just say that you don't know, don't try to make up an answer.
 
     Only return the helpful answer below and nothing else but in spanish.
-    Helpful answer:
     """
 #RUN LOCAL MCP
 #if __name__ == "__main__":  

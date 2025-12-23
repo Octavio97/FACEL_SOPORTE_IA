@@ -16,7 +16,7 @@ logger.setLevel(logging.INFO)
 app = FastAPI()
 MCP_SERVER_URL = os.getenv("MCP_SERVER_URL", "https://facel-soporte-ia.fastmcp.app/mcp")
 API_HOST = os.getenv("API_HOST", "ollama")
-access_token = "fmcp_xpmxheUukEZfauKWNHUY0RvFN5fZh8GICBicJOXb6i0"
+access_token = os.getenv("ACCESS_TOKEN","fmcp_xpmxheUukEZfauKWNHUY0RvFN5fZh8GICBicJOXb6i0")
 
 # Configure constants and client based on environment
 RUNNING_IN_PRODUCTION = os.getenv("RUNNING_IN_PRODUCTION", "false").lower() == "true"
