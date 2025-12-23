@@ -95,7 +95,7 @@ function hideLoader() {
 function botResponse(userMessage) {
     showLoader();
 
-    fetch(`http://127.0.0.1:5000/enviarPregunta/${encodeURIComponent(userMessage)}`)
+    fetch(`http://127.0.0.1:8000/enviarPregunta/${encodeURIComponent(userMessage)}`)
         .then(res => res.json())
         .then(data => {
             hideLoader();

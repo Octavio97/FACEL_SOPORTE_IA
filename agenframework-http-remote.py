@@ -38,7 +38,7 @@ async def http_mcp_questions(pregunta: str) -> None:
             async with ChatAgent(
                 chat_client=client,
                 name="Support FACEL Agent",
-                instructions=f"You help users with questions and errors in the 'Smartfit emision', 'Carga masiva de facturas desde OFC (Oracle Financials Cloud) con la herramienta BICC (Business Intelligence Cloud Connector)' and 'Portal de refacturacion electronica' projects. Today's date is {datetime.now().strftime('%Y-%m-%d')}.",
+                instructions=f"You help users with questions and errors in the 'Smartfit emision', 'Carga masiva de facturas desde OFC (Oracle Financials Cloud) con la herramienta BICC (Business Intelligence Cloud Connector)' and 'Portal de refacturacion electronica' projects. Answer in the same language as the question. Today's date is {datetime.now().strftime('%Y-%m-%d')}.",
             ) as agent:
                 try:
                     logger.info(f"Ejecutando el agente con la pregunta: {pregunta}")
