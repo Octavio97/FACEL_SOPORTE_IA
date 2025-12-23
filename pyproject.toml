@@ -7,6 +7,7 @@ requires-python = ">=3.13"
 dependencies = [
     "agent-framework>=1.0.0b251120",
     "chromadb>=1.3.7",
+    "fastapi[standard]>=0.127.0",
     "fastmcp>=2.14.1",
     "fitz>=0.0.1.dev2",
     "flask>=3.1.2",
