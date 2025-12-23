@@ -22,9 +22,9 @@ access_token = "fmcp_xpmxheUukEZfauKWNHUY0RvFN5fZh8GICBicJOXb6i0"
 RUNNING_IN_PRODUCTION = os.getenv("RUNNING_IN_PRODUCTION", "false").lower() == "true"
 
 client = OpenAIChatClient(
-            base_url=os.environ.get("OLLAMA_ENDPOINT", "http://127.0.0.1:11434"),
+            base_url=os.environ.get("OLLAMA_ENDPOINT", "http://127.0.0.1:11434/v1"),
             api_key="none",
-            model_id=os.environ.get("OLLAMA_MODEL", "deepseek-r1:8b"),
+            model_id=os.environ.get("OLLAMA_MODEL", "mistral"),
          )
 
 # --- Main Agent Logic ---
