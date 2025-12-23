@@ -5,8 +5,16 @@ from rich.logging import RichHandler
 from agent_framework.openai import OpenAIChatClient
 from agent_framework import ChatAgent, MCPStreamableHTTPTool
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import asyncio
 import anyio
+
+origins = [
+    "http://localhost",
+    "http://127.0.0.1:8000",
+    "http://127.0.0.1",
+]
+
 
 # Configure logging
 logging.basicConfig(level=logging.WARNING, format="%(message)s", datefmt="[%X]", handlers=[RichHandler()])
@@ -14,6 +22,15 @@ logger = logging.getLogger("agentframework-http-remote")
 logger.setLevel(logging.INFO)
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 MCP_SERVER_URL = os.getenv("MCP_SERVER_URL", "https://facel-soporte-ia.fastmcp.app/mcp")
 API_HOST = os.getenv("API_HOST", "ollama")
 access_token = os.getenv("ACCESS_TOKEN","fmcp_xpmxheUukEZfauKWNHUY0RvFN5fZh8GICBicJOXb6i0")
@@ -44,23 +61,24 @@ async def http_mcp_questions(pregunta: str) -> None:
                     logger.info(f"Ejecutando el agente con la pregunta: {pregunta}")
                     result = await agent.run(pregunta, tools=mcp_server)
                     logger.info(f"Resultado obtenido: {result}")
-                    return result
+                    return { "status": "1", "message":  str(result.messages[0].contents[0].text)}
+                    #return result
                 except asyncio.CancelledError:
                     logger.error("La tarea fue cancelada durante la ejecución del agente.")
-                    return {"error": "La tarea fue cancelada durante la ejecución del agente."}
+                    return {"status": "0", "message": "La tarea fue cancelada durante la ejecución del agente."}
                 except Exception as inner_err:
                     logger.error(f"Error durante la ejecución del agente: {str(inner_err)}")
-                    return {"error": str(inner_err)}
+                    return {"status": "0", "message": str(inner_err)}
 
     except anyio.WouldBlock:
         logger.warning("El flujo está bloqueado. No hay datos disponibles.")
-        return {"error": "El servidor está tardando demasiado en responder."}
+        return {"status": "0", "message": "El servidor está tardando demasiado en responder."}
     except asyncio.CancelledError:
         logger.error("La solicitud fue cancelada antes de completarse.")
-        return {"error": "La solicitud fue cancelada antes de completarse."}
+        return {"status": "0", "message": "La solicitud fue cancelada antes de completarse."}
     except Exception as err:
         logger.error(f"Error inesperado: {str(err)}")
-        return {"error": str(err)}
+        return {"status": "0", "message": str(err)}
 
 #if __name__ == "__main__":
 #    logger.info("Inicio agentframework-http-remote")

@@ -99,15 +99,15 @@ function botResponse(userMessage) {
         .then(res => res.json())
         .then(data => {
             hideLoader();
-            if (data?.message) {
+            if (data.status == 1) {
                 addMessage(data.message, false, data.metadata);
             } else {
-                addMessage("No se recibió respuesta del servidor.", false);
+                addMessage(`No se recibió respuesta del servidor: ${data.message}`, false);
             }
         })
         .catch(err => {
             hideLoader();
-            addMessage("Error al conectar con el servidor.", false);
+            addMessage(`Error al conectar con el servidor: ${data.message}`, false);
             console.error(err);
         });
 }
